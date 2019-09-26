@@ -32,7 +32,7 @@ public class NotaFiscalTable extends AbstractTableModel {
 
     public int getRowCount() {
         //implementar metodo
-        return 3;
+        return NotaFiscalDAO.notaSize();
     }
 
     public String getColumnName(int col) {
@@ -40,8 +40,13 @@ public class NotaFiscalTable extends AbstractTableModel {
     }
 
     public Object getValueAt(int row, int col) {
-        //implementar metodo
-        return "esse retorno nao faz sentido, corrija quando chegar a hora";
+        if(col == 0){
+            return NotaFiscalDAO.getNota(row).getNumNota();
+        }else if(col == 1){
+            return NotaFiscalDAO.getNota(row).getValNota();
+        }else{
+            return null;
+        }
     }
 
     public Class getColumnClass(int c) {
